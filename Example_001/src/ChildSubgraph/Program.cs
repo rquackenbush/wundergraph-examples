@@ -2,12 +2,11 @@
 using ChildSubgraph.Types;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddGraphQLServer()
-    .AddType<Child>()
-    .AddType<Parent>()
+builder.Services
+    .AddGraphQLServer()
+    .AddApolloFederation()
     .RegisterService<ChildRepository>()
-    .AddQueryType<Query>()
-    .AddApolloFederation();    
+    .AddQueryType<Query>();
 
 builder
    .Services

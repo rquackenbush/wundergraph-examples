@@ -1,12 +1,14 @@
 ﻿using ApolloFederationRepro.Types;
 using ParentSubgraph.Data;
-using ParentSubgraph.Types;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddGraphQLServer()
+
+builder.Services
+    .AddGraphQLServer()
+    .AddApolloFederation()
     .AddQueryType<Query>()
-    .RegisterService<ParentRepository>()
-    .AddApolloFederation();
+    .RegisterService<ParentRepository>();
+    
 
 builder
    .Services
